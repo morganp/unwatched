@@ -29,10 +29,10 @@ Now vist 127.0.0.1:4567 in your favourite browser.
 TODO
 ----
 
-Default location
-Configurable launch command (wired to open)
-Download RSS feeds
-local rss feed, of folder.
+Default location  
+Configurable launch command (wired to open)  
+Download RSS feeds  
+local rss feed of a folder.  
 
 Help/Requests/Comments
 ----
