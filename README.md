@@ -3,7 +3,7 @@
 
 Is an application to help you track unwatched media files, Similar to iTunes functionality for podcasts.
 
-Browse files and click to play. Applicatio will only display folders in top panel and allowed (via prefs) file in un-watched/watched panels
+Browse files and click to play. Application will only display folders in top panel and allowed (via prefs) file in un-watched/watched panels
 
 Starting application
 --------------------
