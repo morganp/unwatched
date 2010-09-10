@@ -24,6 +24,7 @@ NB: Shotgun loads faster and is a better for development.
 
     shotgun -p 4567 app.rb 
 
+Now vist 127.0.0.1:4567 in your favourite browser.
 
 TODO
 ----
