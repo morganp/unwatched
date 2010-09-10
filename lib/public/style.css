@@ -1,0 +1,117 @@
+
+body {
+  background-color: #DDD ;
+  font-family:  "Helvetica Neue",Arial,Helvetica,sans-serif ;
+  font-weight:  400 ;
+  font-size:    14.4px ;
+  font-style:   normal ;
+}
+
+h3 {
+  color: #aaa;
+}
+
+table {
+  margin:  0px;
+  padding: 0px;    
+}
+
+tr {
+  margin:  0px;
+  padding: 0px;
+}
+
+td {
+  margin:  0px;
+  padding: 0px;
+  margin-right: 50px;
+  padding-right: 50px;
+}
+
+textarea {
+   width:  100%;
+   height: 3em;
+}
+
+.centre {
+  width:  700px ;
+  padding: 10px;
+   
+  margin-left:  auto ;
+  margin-right: auto ;
+}
+
+div#container {
+  min-height:500px;
+  background-color: #111;
+}
+
+
+div.title {
+  color: #aaaaaa;
+  background-color: #111;
+  padding-left:  10px;
+}
+
+div.menu {
+  color: #000;
+  margin-top:     0px;
+  margin-bottom:  0px;
+  padding-left:  10px;
+  padding:        0px;
+}
+
+.menu a:link    {color: #444;}
+.menu a:visited {color: #444;}
+.menu a:hover   {color: #111;}
+.menu a:active  {color: #000;}
+
+
+div.new {
+  background-color: #A3C7DA;
+}
+
+.new a:link    {color: #424242;}  /* unvisited link */
+.new a:visited {color: #424242;}  /* visited link */
+.new a:hover   {color: #161616;}  /* mouse over link */
+.new a:active  {color: #000;}  /* selected link */
+
+
+div.unwatched {
+  background-color: #7BBF71;
+}
+
+.unwatched a:link    {color: #424242;}  /* unvisited link */
+.unwatched a:visited {color: #424242;}  /* visited link */
+.unwatched a:hover   {color: #161616;}  /* mouse over link */
+.unwatched a:active  {color: #000;}  /* selected link */
+
+.unwatched td {color: #333;}
+
+
+div.watched {
+  background-color: #E51E33;
+}
+
+.watched a:link    {color: #aaa;}  /* unvisited link */
+.watched a:visited {color: #aaa;}  /* visited link */
+.watched a:hover   {color: #ddd;}  /* mouse over link */
+.watched a:active  {color: #eee;}  /* selected link */
+
+.watched td {color: #aaa;}
+
+
+.pad_nice {
+  margin-bottom: 10px;
+  padding-left:  10px;
+}
+
+.round {
+     -moz-border-radius: 8px; /* FF1+ */
+  -webkit-border-radius: 8px; /* Saf3-4 */
+          border-radius: 8px; /* Opera 10.5, IE 9, Saf5, Chrome */
+     -moz-box-shadow: 2px 2px 6px #ffffff; /* FF3.5+ */
+  -webkit-box-shadow: 2px 2px 6px #ffffff; /* Saf3.0+, Chrome */
+          box-shadow: 2px 2px 6px #ffffff; /* Opera 10.5, IE 9.0 */
+}
+

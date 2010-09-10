@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+#require 'unwatched'
+
+#require File.expand_path(File.dirname(__FILE__) + './lib/app.rb')
+#require 'vegas'
+#Vegas::Runner.new(Unwatched, 'unwatched')
+
+#Small function to run a command and output return values
+def do_and_report(command)
+   f = open("| #{command}")
+   g = Array.new
+   while (foo = f.gets)
+      g << foo
+   end
+   g.each do |element|
+      puts element
+   end
+end
+
+## Build and run migrations here
+
+   
+Dir.chdir(File.expand_path(File.dirname(__FILE__) + '/../lib/'))
+#do_and_report( 'ls -l' )
+#open("| ruby app.rb")
+do_and_report( 'ruby app.rb -p 6060' )
+

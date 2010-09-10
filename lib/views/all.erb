@@ -1,0 +1,36 @@
+<% @div_title = "Path: #{@path}" %>
+
+
+      <div class='new round pad_nice'>
+         Browser:<br  />
+         <% @files[:files].each do |file| %>
+         <a href='/<%=@url%>?path=<%=file[:path]%>'><%=file[:label]%></a><br  />
+         <% end %>
+      </div>
+      <div class='unwatched round pad_nice'>
+         <table>
+         <tr>
+           <th><a href="/<%=@url_alpha%>?path=<%=@path%>">Unwatched Name</a></th>
+           <th><a href="/<%=@url_mod%>?path=<%=@path%>">Modified</a></th>
+         </tr>
+         <% @files[:unwatched].each do |file| %>
+         <tr><td><a class='unwatched' href='/<%=@url%>?path=<%=file[:path]%>'><%=file[:label]%></a></td>
+         <td><%= file[:modified] %></td>
+         </tr>
+         <% end %>
+         </table>
+      </div>
+      <div class='watched round pad_nice'>
+         <table>
+         <tr>
+           <th><a href="/<%=@url_alpha%>?path=<%=@path%>">Watched Name</a></th>
+           <th><a href="/<%=@url_mod%>?path=<%=@path%>">Modified</a></th>
+         </tr>
+         <% @files[:watched].each do |file| %>
+         <tr><td><a class='watched' href='/<%=@url%>?path=<%=file[:path]%>'><%=file[:label]%></a></td>
+         <td><%= file[:modified] %></td>
+         </tr>
+         <% end %>
+         </table>
+      </div>
+

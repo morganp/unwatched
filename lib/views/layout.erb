@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset=utf-8>
+      <title> (Un)Watched Amaras </title>
+      <link href="/style.css" rel="stylesheet" type="text/css" media="screen, projection"/>      
+   </head>
+   <body>
+   <div class='title centre round'>
+      <%= @div_title %>
+   </div>
+   <div class='menu centre'>
+      <a href="/<%=@url_normal%>?path=<%=@path%>">Normal</a>
+      <a href="/<%=@url_safe%>?path=<%=@path%>">Safe</a>
+      <a href="/<%=@url_merged%>?path=<%=@path%>">Merged</a>
+      <a href="/">Favourites</a>
+      <a href="/podcast">Podcast</a>
+      <a href="/pref">Preferences</a>
+   </div>
+   <div id='container' class='centre round'>
+      <%= yield %>
+   </div>
+   </body>
+</html>

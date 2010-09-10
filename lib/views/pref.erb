@@ -1,0 +1,19 @@
+<% @div_title = "Preferences" %>
+
+
+<form method="post" action="/pref">
+  <input name="_method" type="hidden" value="post" />
+   <button type="submit">Save</button><br  />
+   <h3>Default Folder</h3>
+
+   <h3>Media Extensions to Show</h3>
+   <textarea id="ext" name="post[ext]" ><% @ext.each do |ext| %><%= ext.ext %>,<% end %></textarea><br  />
+
+   <h3>Safe Mode: blocked keywords</h3>
+
+   <h3>Merged View: Paths to merge</h3>
+
+
+  	<button type="submit">Save</button>
+</form>
+
