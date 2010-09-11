@@ -15,14 +15,15 @@
 
 
 
-      def get_extensions
+     def get_extensions
          debug( "get_extensions" )
          allowed_extension = ''
-         Extension.all.each do |x|
+         UnWatched::Extension.all.each do |x|
             allowed_extension << "\\\." + x.ext + "$|"
          end
          allowed_extension.chop! 
       end
+ 
 
 
 
@@ -37,7 +38,7 @@
               
                # Check if in Database (on click to play)
                file_name = File.basename( path )
-               node      = Node.find_or_create_by_name( file_name )
+               node      = UnWatched::Node.find_or_create_by_name( file_name )
                path      = File.dirname( path )
                return {:media=>true, :path=>path}
             else
@@ -68,13 +69,13 @@
          files_two = Array.new
          files.each do |file|
             # Safe mode check here rather than an extra loop
-            if ( mode == SAFE ) and  file.match(/XXX/)
+            if ( mode == UnWatched::SAFE ) and  file.match(/XXX/)
                #puts "Blocked : " + file
             else
                files_two << { 
                   :path     => file,
                   :label    => File.basename(file),
-                  :modified => File.stat(file).mtime.strftime($DATE_FORMAT)
+                  :modified => File.stat(file).mtime.strftime(UnWatched::DATE_FORMAT)
                }
             end
          end
@@ -88,7 +89,7 @@
          complete_list.each do |file|
             # Check if in Database (on click to play)
             if file[:label].match( /#{allowed_extension}/ )
-               node = Node.find_by_name(file[:label])
+               node = UnWatched::Node.find_by_name(file[:label])
                if node
                   watched << file
                else
@@ -110,7 +111,7 @@
 
          ## Sort The Arrays
          files     = files.sort_by     { |file| file[:label].downcase }
-         if sort == SORT_MOD_ASC or  sort == SORT_MOD_DESC
+         if sort == UnWatched::SORT_MOD_ASC or  sort == UnWatched::SORT_MOD_DESC
             unwatched = unwatched.sort_by { |file| File.stat(file[:path]).mtime }
             watched   = watched.sort_by {   |file| File.stat(file[:path]).mtime }
          else
@@ -118,7 +119,7 @@
             watched   = watched.sort_by   { |file| file[:label].downcase }
          end
 
-         if sort == SORT_MOD_DESC or sort == SORT_ALPHA_DESC
+         if sort == UnWatched::SORT_MOD_DESC or sort == UnWatched::SORT_ALPHA_DESC
             unwatched.reverse!
             watched.reverse!
          end
@@ -143,4 +144,26 @@
          url.gsub!(/^\//, '')
          return url
       end
+
+   def urls_for_sort_links( url )
+      ## Create sort base_url
+      temp_url = remove_sort( url )
+      url_alpha = ''
+      url_mod = ''
+      case @sort
+         when UnWatched::SORT_ALPHA_ASC
+            url_alpha = "alpha_desc/" + temp_url
+            url_mod   = "mod/"        + temp_url
+         when UnWatched::SORT_ALPHA_DESC
+            url_alpha = "alpha/" + temp_url
+            url_mod   = "mod/"   + temp_url
+         when UnWatched::SORT_MOD_ASC
+            url_alpha = "alpha/"    + temp_url
+            url_mod   = "mod_desc/" + temp_url
+         when UnWatched::SORT_MOD_DESC
+            url_alpha = "alpha/" + temp_url
+            url_mod   = "mod/"   + temp_url
+      end
+      return [url_alpha, url_mod]
+   end
 
