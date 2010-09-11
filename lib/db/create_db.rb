@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sequel'
  
 # Connect to the database
-DB = Sequel.sqlite('./amaras_webview.db')
+DB = Sequel.sqlite('./unwatched.db')
 
 ##########################################################
   DB.create_table :nodes do
@@ -10,6 +10,12 @@ DB = Sequel.sqlite('./amaras_webview.db')
     foreign_key :parent_id, :nodes
     varchar :name
   end
+
+  DB.create_table :extensions do
+      primary_key    :id
+      varchar        :ext
+  end
+
 
 
 ##########################################################
