@@ -26,7 +26,17 @@ require 'active_record'
 module UnWatched
 
    class App < Sinatra::Base
-      
+      begin
+         #Load extra functions
+         path = File.expand_path( __FILE__ )
+         path = File.dirname( path )
+
+         require "./helpers/browser_helper"
+
+      rescue
+         puts "Helpers not loading correctly"
+      end
+ 
 #      get '/'  do
 #        "Hello World!"
 #      end
