@@ -9,14 +9,15 @@ require 'model'
 
 
 module UnWatched
-       ## Modes 
-      NORMAL          = 100
-      SAFE            = 200
-      MERGED          = 10
-      SORT_MOD_ASC    = 1
-      SORT_MOD_DESC   = 2
-      SORT_ALPHA_ASC  = 3
-      SORT_ALPHA_DESC = 4
+      ## Modes
+      # These are the symbols used to denote the modes
+      #:normal
+      #:safe
+      #:merged          
+      #:sort_mod_asc    
+      #:sort_mod_desc   
+      #:sort_alpha_asc  
+      #:sort_alpha_desc 
 
       DATE_FORMAT = "%I:%M%p %b %d %Y"
 end
