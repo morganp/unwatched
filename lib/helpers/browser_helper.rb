@@ -4,6 +4,10 @@
       end
    end
 
+   def url_strip_word( url, word )
+      temp_url = url.gsub(/(\/)?#{word}/, "")
+      temp_url.gsub!(/^\//, '')
+   end
 
 
       def get_path( path )
