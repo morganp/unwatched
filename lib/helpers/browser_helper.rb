@@ -170,3 +170,28 @@
          :watched    => watched 
       }
    end
+
+
+   ## Filter allowed normal/safe files based on mode
+   def list_current_mode_files( path, mode )
+      ## Remove Trailing / on folders
+      path.gsub!(/\/$/,'')
+      files = Dir.glob(path + '/*')
+
+      ## Make new Array with hash for path, labels etc
+      files_filtered = Array.new
+      files.each do |file|
+         # Safe mode check here rather than an extra loop
+         if ( mode == :safe ) and  file.match(/XXX/)
+            #Blocked file
+         else
+            files_filtered << { 
+               :path     => file,
+               :label    => File.basename(file),
+               :modified => File.stat(file).mtime.strftime(UnWatched::DATE_FORMAT)
+            }
+         end
+      end
+      return files_filtered
+   end
+
