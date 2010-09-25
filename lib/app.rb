@@ -5,24 +5,9 @@ require 'sinatra/base'
 #require 'sinatra'
 
 require 'active_record'
-## TODO s
+require 'model'
 
 
-# TODO add db init and migrations into executable
-
-# TODO config options default location default sort 
-
-# TODO Merged view, 
-# TODO merged view prefs
-
-# TODO watched button
-# TODO not watched button
-# TODO mark all as read button
-
-# TODO prefs and other urls do not set safe mode correctly
-# TODO handle spaces in the url path
-
-# TODO write specs!
 module UnWatched
        ## Modes 
       NORMAL          = 100
