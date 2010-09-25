@@ -145,3 +145,28 @@
    end
 
 
+
+   def get_files( path, mode, sort )
+      debug( "get_files( #{path} #{mode}  #{sort} )" )
+
+      files                   = list_current_mode_files( path, mode )
+            
+      ## Filter list into Browser,watched & unwatched
+      files,watched,unwatched = filter_watched_unwatched_files( files )
+
+      ## Sort The Arrays
+      files                   = files.sort_by { |file| file[:label].downcase }
+
+      # Add up link after sort
+      files.insert(0, {:path => (path + '/..'), :label => 'UP .. '})
+
+      #Sort Files based on mode
+      unwatched               = sort_media_files( unwatched, sort )
+      watched                 = sort_media_files(   watched, sort )
+
+      return {
+         :files      => files, 
+         :unwatched  => unwatched, 
+         :watched    => watched 
+      }
+   end
