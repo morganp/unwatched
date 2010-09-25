@@ -27,42 +27,25 @@ module UnWatched
 
    class App < Sinatra::Base
       
- 
-#      get '/'  do
-#        "Hello World!"
-#      end
-
-      
-      #set :raise_errors, Proc.new { false }
-      #set :sessions, false
-      #set :static, true
-      #set :show_exceptions, false 
       set :public, "public"
 
       configure :production  do
-         puts "Production"
       end
 
       configure :development do
-         puts "Development"
       end
 
-      configure  :test do
-         puts "Test"
+      configure :test do
       end
      
       begin
          #Load extra functions
          path = File.expand_path( __FILE__ )
          path = File.dirname( path )
-
          require "./helpers/browser_helper"
-
       rescue
          puts "Helpers not loading correctly"
       end
-      
-     
       
 
       ####################################
