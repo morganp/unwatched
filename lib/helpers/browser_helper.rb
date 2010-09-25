@@ -1,8 +1,8 @@
-      def debug( msg )
-         if true
-            puts msg
-         end
+   def debug( msg )
+      if true == false
+         puts msg
       end
+   end
 
 
 
