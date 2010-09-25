@@ -228,3 +228,19 @@
    end
 
 
+
+   def sort_media_files( files, sort )
+      if sort == :sort_mod_asc or  sort == :sort_mod_desc
+         files = files.sort_by { |file| File.stat(file[:path]).mtime }
+      else
+         files = files.sort_by { |file| file[:label].downcase }
+      end
+
+      if sort == :sort_mod_desc or sort == :sort_alpha_desc
+         files.reverse!
+      end
+
+      return files
+   end
+
+
