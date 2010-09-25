@@ -10,13 +10,13 @@
    end
 
 
-      def get_path( path )
-         debug( "get_path( #{path} )" )
-         path  =   path ||= '/'
-         ## expand path turns into ./1/2/.. into ./1
-         @path =   File.expand_path( path )
-      end
 
+   def get_path( path )
+      debug( "get_path( #{path} )" )
+      path  =   path ||= '/'
+      ## expand path turns into ./1/2/.. into ./1
+      @path =   File.expand_path( path )
+   end
 
 
      def get_extensions
