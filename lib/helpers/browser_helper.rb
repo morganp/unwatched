@@ -108,3 +108,14 @@
       return [url_alpha, url_mod]
    end
 
+
+
+   def  create_merged_url( url, merged )
+      if merged
+         url_merged = url_strip_word( url, "merged" )
+      else
+         url_merged = "merged/" + url
+      end
+      return url_merged
+   end
+
