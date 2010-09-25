@@ -89,67 +89,27 @@ module UnWatched
       
             @url                    = params['splat'].to_s
      
-             ## Default Behaviours
-             @mode       = UnWatched::NORMAL
-             @sort       = UnWatched::SORT_ALPHA_ASC
-             @merged     = false
-      
-             puts "URL: " + @url
-             splats = @url.to_s.split("/")
-             splats.each do |splat|
-             case splat
-                when "safe" 
-                   @mode = UnWatched::SAFE
-                when "merged"
-                   @merged = true
-                when "alpha"
-                   @sort = UnWatched::SORT_ALPHA_ASC
-                when "alpha_desc"
-                   @sort = UnWatched::SORT_ALPHA_DESC
-                when "mod"
-                   @sort = UnWatched::SORT_MOD_ASC
-                when "mod_desc"
-                   @sort = UnWatched::SORT_MOD_DESC
-                end
+            #Determine mode from url 
+            @mode, @merged, @sort   = discover_mode_from_url( @url ) 
                    
-             end
-      
-             ## Create sor base_url
-             case @mode
-                when UnWatched::NORMAL
-                   @url_normal = @url
-                   @url_safe = "safe/" + @url 
-                when UnWatched::SAFE
-                   temp_url = @url.gsub(/(\/)?safe/, "")
-                   temp_url.gsub!(/^\//, '')
-                   if temp_url == ""
-                      temp_url = "/"
-                   end
-                   @url_normal = temp_url
-                   @url_safe   = @url
-      
-                   puts "SAFE MODE"
-                   puts  @url_safe
-             end
-           
-             @url_alpha, @url_mod = urls_for_sort_links( @url.dup ) 
+            ## Create base_urls
+            @url_normal, @url_safe  = create_base_url( @url, @mode ) 
 
-             if @merged
-                temp_url = @url.gsub(/(\/)?merged/, "")
-                temp_url.gsub!(/^\//, '')
-                @url_merged = temp_url
-             else
-                @url_merged = "merged/" + @url
-             end
-      
-             @files = get_files( @path, @mode, @sort )
-             #@param = get_params(  params )
-             erb :all
-          end
-       end
-   
+            ## Create urls for sorting links 
+            @url_alpha, @url_mod    = create_sort_urls( @url.dup, @sort ) 
+
+            ## create url for merged/unmerged views
+            @url_merged             = create_merged_url( @url, @merged )
+
+            @files                  = get_files( @path.dup, @mode, @sort )
+            erb :all
+         end
+      end
+
    end #class
 end #module
+
+
 
 if $0 == __FILE__
    UnWatched::App.run!
