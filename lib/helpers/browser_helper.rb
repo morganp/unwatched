@@ -244,3 +244,15 @@
    end
 
 
+   def remove_sort( url )
+      debug( "remove_sort( #{url} )" )
+      url.gsub!(/(\/)?alpha_desc/, '')
+      url.gsub!(/(\/)?mod_desc/, '')
+      url.gsub!(/(\/)?alpha/, '')
+      url.gsub!(/(\/)?mod/, '')
+      url.gsub!(/^\//, '')
+      return url
+   end
+
+   
+
