@@ -195,3 +195,36 @@
       return files_filtered
    end
 
+
+   # Filter file list into directory, watched and unwatched arrays 
+   def filter_watched_unwatched_files( files )
+      unwatched         = Array.new
+      watched           = Array.new
+
+      allowed_extension = get_extensions 
+
+      files.delete_if do |file|
+         test = file[:label].match( /#{allowed_extension}/ )
+         # Check if in Database (on click to play)
+         if test
+            if UnWatched::Node.find_by_name(file[:label])
+               watched << file
+            else
+               unwatched << file
+            end
+         else
+            ## Only display folders in the browser Pane 
+            if not File.directory?(file[:path])
+               #Delete File
+               test = true
+            end
+         end
+
+         # return true if the file is to be delted from array
+         test
+      end
+
+      return [files, watched, unwatched]
+   end
+
+
