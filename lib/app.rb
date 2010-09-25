@@ -53,43 +53,41 @@ module UnWatched
       ####################################
       ### Prefs
       ####################################
-
-
-       get '/pref' do
+      get '/pref' do
          @ext = UnWatched::Extension.all
          erb :pref
-       end
+      end
 
-       post '/pref' do
-          UnWatched::Extension.delete_all
-          ext_array = params['post']['ext'].split(',')
-          ext_array.each do |ext|
+      post '/pref' do
+         UnWatched::Extension.delete_all
+         ext_array = params['post']['ext'].split(',')
+         ext_array.each do |ext|
             ext.strip!
             UnWatched::Extension.find_or_create_by_ext( ext )
-          end
+         end
 
-          @ext = UnWatched::Extension.all
-          erb :pref
-       end
+         @ext = UnWatched::Extension.all
+         erb :pref
+      end
 
       
-       ####################################
-       ### Main Route 
-       ####################################
-       get '/*' do
-          @path      = get_path( params['path'] )
+      ####################################
+      ### Main Route 
+      ####################################
+      get '/*' do
+         @path      = get_path( params['path'] )
            
-          media_test = open_media( @path )
+         media_test = open_media( @path )
             
-          if media_test[:media]
-             debug( "if media_test" )
-             ## This redirect to not include the file to be launched
-             ##  This allows browser to be refreshed to get the new file list
-             redirect "/" + params["splat"].to_s + "?path=" +  media_test[:path]
-          else
-             debug( "if not media_test" )
+         if media_test[:media]
+            debug( "if media_test" )
+            ## This redirect to not include the file to be launched
+            ##  This allows browser to be refreshed to get the new file list
+            redirect "/" + params["splat"].to_s + "?path=" +  media_test[:path]
+         else
+            debug( "if not media_test" )
       
-             @url        = params['splat'].to_s
+            @url                    = params['splat'].to_s
      
              ## Default Behaviours
              @mode       = UnWatched::NORMAL
