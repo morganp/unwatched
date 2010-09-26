@@ -120,7 +120,7 @@ module UnWatched
          ## Clicked File to play
          if path.match( /#{allowed_extension}/ )
             if File.exists?(path) 
-               open("| open #{path}")
+               open("| open '#{path}'")
               
                # Check if in Database (on click to play)
                file_name = File.basename( path )
