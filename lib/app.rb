@@ -5,8 +5,7 @@ require 'sinatra/base'
 #require 'sinatra'
 
 require 'active_record'
-require 'model'
-
+require 'model/model'
 
 module UnWatched
       ## Modes
