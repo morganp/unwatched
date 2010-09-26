@@ -118,6 +118,8 @@ module UnWatched
 
       def open_media( path )
          ## Clicked File to play
+         path = CGI.unescape( path )
+         
          if path.match( /#{allowed_extension}/ )
             if File.exists?(path) 
                open("| open '#{path}'")
@@ -176,7 +178,7 @@ module UnWatched
                #Blocked file
             else
                files_filtered << { 
-                  :path     => file,
+                  :path     => CGI.escape( file ),
                   :label    => File.basename(file),
                   :modified => File.stat(file).mtime.strftime(UnWatched::DATE_FORMAT)
                }

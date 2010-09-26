@@ -6,6 +6,9 @@ require 'active_record'
 require 'model/model'
 require 'helpers/browser_helper'
 
+#For the file name escaping unescaping
+require 'cgi'
+
 module UnWatched
 
    ## Modes
