@@ -6,6 +6,7 @@ require 'sinatra/base'
 
 require 'active_record'
 require 'model/model'
+require 'helpers/browser_helper'
 
 module UnWatched
       ## Modes
@@ -25,6 +26,10 @@ end
 module UnWatched
 
    class App < Sinatra::Base
+         
+      
+      #Mixin extra functions
+      include UnWatched::BrowserHelper
       
       set :public, "public"
 
@@ -37,16 +42,6 @@ module UnWatched
       configure :test do
       end
      
-      begin
-         #Load extra functions
-         path = File.expand_path( __FILE__ )
-         path = File.dirname( path )
-         require "./helpers/browser_helper"
-      rescue
-         puts "Helpers not loading correctly"
-      end
-      
-
       ####################################
       ### ROUTES 
       ####################################
