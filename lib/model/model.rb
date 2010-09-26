@@ -1,7 +1,7 @@
 module UnWatched
    ActiveRecord::Base.establish_connection(
       :adapter    => 'sqlite3',
-      :database   => File.dirname( __FILE__) + '/db/unwatched.db'
+      :database   => File.dirname( __FILE__) + '/../db/unwatched.db'
    )
 
    class Node < ActiveRecord::Base
