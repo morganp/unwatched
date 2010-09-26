@@ -1,29 +1,24 @@
 
 require 'rubygems'
-#compass ##Here
 require 'sinatra/base'
-#require 'sinatra'
 
 require 'active_record'
 require 'model/model'
 require 'helpers/browser_helper'
 
 module UnWatched
-      ## Modes
-      # These are the symbols used to denote the modes
-      #:normal
-      #:safe
-      #:merged          
-      #:sort_mod_asc    
-      #:sort_mod_desc   
-      #:sort_alpha_asc  
-      #:sort_alpha_desc 
 
-      DATE_FORMAT = "%I:%M%p %b %d %Y"
-end
+   ## Modes
+   # These are the symbols used to denote the modes
+   #:normal
+   #:safe
+   #:merged          
+   #:sort_mod_asc    
+   #:sort_mod_desc   
+   #:sort_alpha_asc  
+   #:sort_alpha_desc 
 
-
-module UnWatched
+   DATE_FORMAT = "%I:%M%p %b %d %Y"
 
    class App < Sinatra::Base
          
@@ -71,16 +66,15 @@ module UnWatched
       get '/*' do
          @path      = get_path( params['path'] )
            
+         #Check if Media file, and launch if required.   
          media_test = open_media( @path )
             
          if media_test[:media]
-            debug( "if media_test" )
-            ## This redirect to not include the file to be launched
-            ##  This allows browser to be refreshed to get the new file list
+            ## Redirect, do not include the file to be launched.
+            ## This allows browser to be refreshed to get a new file list.
             redirect "/" + params["splat"].to_s + "?path=" +  media_test[:path]
+
          else
-            debug( "if not media_test" )
-      
             @url                    = params['splat'].to_s
      
             #Determine mode from url 
