@@ -1,0 +1,23 @@
+
+UnWatched
+=========
+
+Readme also covers basic setup.
+
+    cd lib/db
+    ruby create_db.rb
+    cd ../
+    ruby app.rb
+
+Now visit 127.0.0.1:4567
+
+The browser should start at / and allow you to browse your filesystem.
+Currently the file launches only works on mac, and calls open on the file.
+
+At the start of the session I had a basic framework for the project. I have moved this forward by having prefferences page with the ability to save the media extensions that will be viewed. I have moved from a classic to sinatra application to a classy sinatra application. I have also worked out how to start writing rspec tests for classy sinarta applications.
+
+Time has also gone into bug fixing and refactoring the methods so that they are shorter and more concise.
+
+The code is inside the lib directory and follows the standard Sinatra layout with an added helpers and models folder.
+
+There is a list of features in TODO.md which are still to implement. There are no known bug in the currently implemented features
