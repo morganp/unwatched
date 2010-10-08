@@ -123,7 +123,7 @@ module UnWatched
          ## Clicked File to play
          path = CGI.unescape( path )
          
-         if path.match( /#{allowed_extension}/ )
+         if path.match( /#{Extension.allowed_extension}/ )
             if File.exists?(path) 
                open("| open '#{path}'")
               
