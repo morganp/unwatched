@@ -3,7 +3,8 @@ require 'rubygems'
 require 'sinatra/base'
 
 require 'active_record'
-require 'model/model'
+require 'model/node'
+require 'model/extension'
 require 'helpers/browser_helper'
 
 #For the file name escaping unescaping
@@ -32,12 +33,24 @@ module UnWatched
       set :public, "public"
 
       configure :production  do
+         ActiveRecord::Base.establish_connection(
+            :adapter    => 'sqlite3',
+            :database   => File.dirname( __FILE__) + '/db/unwatched.db'
+         )
       end
 
       configure :development do
+         ActiveRecord::Base.establish_connection(
+            :adapter    => 'sqlite3',
+            :database   => File.dirname( __FILE__) + '/db/unwatched.db'
+         )
       end
 
       configure :test do
+         ActiveRecord::Base.establish_connection(
+            :adapter    => 'sqlite3',
+            :database   => File.dirname( __FILE__) + '/db/unwatched_test.db'
+         )
       end
      
       ####################################

@@ -16,13 +16,6 @@ module UnWatched
 
 
 
-      def allowed_extension
-         allowed_extension = ''
-         UnWatched::Extension.all.each do |x|
-            allowed_extension << "\\\." + x.ext + "$|"
-         end
-         allowed_extension.chop! 
-      end
 
 
 
