@@ -97,6 +97,16 @@ module UnWatched
       end
 
 
+      def remove_sort( url )
+         url.gsub!(/(\/)?alpha_desc/, '')
+         url.gsub!(/(\/)?mod_desc/, '')
+         url.gsub!(/(\/)?alpha/, '')
+         url.gsub!(/(\/)?mod/, '')
+         url.gsub!(/^\//, '')
+         return url
+      end
+
+
 
       def  create_merged_url( url, merged )
          if merged
@@ -227,14 +237,6 @@ module UnWatched
       end
 
 
-      def remove_sort( url )
-         url.gsub!(/(\/)?alpha_desc/, '')
-         url.gsub!(/(\/)?mod_desc/, '')
-         url.gsub!(/(\/)?alpha/, '')
-         url.gsub!(/(\/)?mod/, '')
-         url.gsub!(/^\//, '')
-         return url
-      end
    end   
 end
 
