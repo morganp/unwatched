@@ -16,9 +16,6 @@ module UnWatched
 
 
 
-
-
-
       def discover_mode_from_url( url )
 
          ## Default Behaviours
@@ -145,7 +142,7 @@ module UnWatched
 
       def get_files( path, mode, sort )
          files                   = list_current_mode_files( path, mode )
-               
+        
          ## Filter list into Browser,watched & unwatched
          files,watched,unwatched = filter_watched_unwatched_files( files )
 
@@ -197,7 +194,7 @@ module UnWatched
          unwatched         = Array.new
 
          files.delete_if do |file|
-            test = file[:label].match( /#{allowed_extension}/ )
+            test = file[:label].match( /#{Extension.allowed_extension}/ )
             # Check if in Database (on click to play)
             if test
                if UnWatched::Node.find_by_name(file[:label])
