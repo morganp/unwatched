@@ -204,7 +204,7 @@ module UnWatched
                end
             else
                ## Only display folders in the browser Pane 
-               if not File.directory?(file[:path])
+               if not File.directory?(CGI.unescape(file[:path]))
                   #Delete File
                   test = true
                end
