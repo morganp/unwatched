@@ -12,10 +12,24 @@
          <tr>
            <th><a href="/<%=@url_alpha%>?path=<%=@path%>">Unwatched Name</a></th>
            <th><a href="/<%=@url_mod%>?path=<%=@path%>">Modified</a></th>
+           <th><a href="#">Modify Status</a></th>
          </tr>
+         <tr>
+            <td colspan="3">
+               <strong><a href='/<%=@url%>?mark=watched&path=<%=@path%>'>Mark All Watched</a></strong>
+            </td>
+         </tr>
+
          <% @files[:unwatched].each do |file| %>
-         <tr><td><a class='unwatched' href='/<%=@url%>?path=<%=file[:path]%>'><%=file[:label]%></a></td>
-         <td><%= file[:modified] %></td>
+            <tr>
+               <td>
+                  <a class='unwatched' href='/<%=@url%>?path=<%=file[:path]%>'><%=file[:label]%>
+               </a>
+            </td>
+            <td><%= file[:modified] %></td>
+            <td class='status'>
+               <a href="/<%=@url%>?mark=watched&path=<%=file[:path]%>">watched</a>
+            </td>
          </tr>
          <% end %>
          </table>
@@ -25,11 +39,22 @@
          <tr>
            <th><a href="/<%=@url_alpha%>?path=<%=@path%>">Watched Name</a></th>
            <th><a href="/<%=@url_mod%>?path=<%=@path%>">Modified</a></th>
-         </tr>
+           <th><a href="#">Modify Status</a></th>
+        </tr>
+        <tr>
+           <td colspan="3">
+              <strong><a href='/<%=@url%>?mark=unwatched&path=<%=@path%>'>Mark All UnWatched</a></strong>
+           </td>
+        </tr>
+
          <% @files[:watched].each do |file| %>
-         <tr><td><a class='watched' href='/<%=@url%>?path=<%=file[:path]%>'><%=file[:label]%></a></td>
-         <td><%= file[:modified] %></td>
-         </tr>
+            <tr>
+               <td>
+                  <a class='watched' href='/<%=@url%>?path=<%=file[:path]%>'><%=file[:label]%></a>
+               </td>
+               <td><%= file[:modified] %></td>
+               <td class='status'><a href="/<%=@url%>?mark=unwatched&path=<%=file[:path]%>">unwatched</a></td>
+            </tr>
          <% end %>
          </table>
       </div>
