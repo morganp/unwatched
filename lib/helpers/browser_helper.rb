@@ -125,10 +125,13 @@ module UnWatched
                open("| open '#{path}'")
               
                # Check if in Database (on click to play)
-               file_name = File.basename( path )
-               node      = UnWatched::Node.find_or_create_by_name( file_name )
-               path      = File.dirname( path )
-               return { :media=>true, :path=>path }
+               #file_name = File.basename( path )
+               #node      = UnWatched::Node.find_or_create_by_name( file_name )
+               #path      = File.dirname( path )
+
+               path      = mark_media("watched", path)
+
+               return { :media=>true, :path=>path[:path] }
             else
                puts "Error #{path} does not exist"
                return { :media=>false, :path=>path }
@@ -137,6 +140,36 @@ module UnWatched
             return { :media=>false, :path=>path }
          end
       end
+
+      def mark_media( mark, path, mode='')
+         unesc_path = CGI.unescape( path )
+         
+         if File.directory?(path)
+            #if directory recurse over file list
+            list_current_mode_files( path, mode ).each do |file| 
+               mark_media( mark, file[:path])
+            end
+
+            return {:media=>true, :path=>path}
+         
+         else
+            #is file
+            file_name = File.basename( unesc_path )
+
+            if mark == "watched"
+               node      = UnWatched::Node.find_or_create_by_name( file_name )
+            else
+               if  UnWatched::Node.exists?( :name=>file_name )
+                  node      = UnWatched::Node.find_by_name( file_name )
+                  UnWatched::Node.destroy(node)
+               end
+            end
+            path      = File.dirname( unesc_path )
+
+            return { :media=>true, :path=>path }
+         end
+      end
+
 
 
 
