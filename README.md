@@ -9,8 +9,9 @@ Starting application
 --------------------
 
     gem install Sinatra active_record sequel sqlite3-ruby 
+    git clone git://github.com/morganp/unwatched.git
 
-Currently you need to manualy create the database.
+Currently you need to manually create the database.
 
     cd lib/db
     ruby create_db.rb
