@@ -1,7 +1,7 @@
 (Un)Watched
 ===========
 
-Is an application to help you track unwatched media files, Similar to iTunes functionality for podcasts.
+Is an application to help you track unwatched media files, similar to iTunes functionality for podcasts.
 
 Browse files and click to play. Application will only display folders in top panel and allowed (via prefs) files in un-watched/watched panels
 
