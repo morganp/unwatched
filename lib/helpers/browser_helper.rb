@@ -254,7 +254,7 @@ module UnWatched
 
       def sort_media_files( files, sort )
          if sort == :sort_mod_asc or  sort == :sort_mod_desc
-            files = files.sort_by { |file| File.stat(file[:path]).mtime }
+            files = files.sort_by { |file| File.stat(CGI.unescape(file[:path])).mtime }
          else
             files = files.sort_by { |file| file[:label].downcase }
          end
