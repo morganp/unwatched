@@ -4,19 +4,34 @@
       <meta charset=utf-8>
       <title> (Un)Watched Amaras </title>
       <link href="/style.css" rel="stylesheet" type="text/css" media="screen, projection"/>      
+      <script type="text/javascript" src="/jquery-1.4.3.min.js"></script>
+      <!-- Drop Down Menu -->
+      <link rel="stylesheet" type="text/css" href="/dropmenu.css">
+      <script type="text/javascript" src="/dropmenu.js"></script>
+      
    </head>
    <body>
    <div class='title centre round'>
       <%= @div_title %>
-   </div>
-   <div class='menu centre'>
-      <a href="/<%=@url_normal%>?path=<%=@path%>">Normal</a>
-      <a href="/<%=@url_safe%>?path=<%=@path%>">Safe</a>
-      <a href="/<%=@url_merged%>?path=<%=@path%>">Merged</a>
-      <a href="/">Favourites</a>
-      <a href="/podcast">Podcast</a>
-      <a href="/pref">Preferences</a>
-   </div>
+    </div>
+      <div id='nav' >
+      <ul id="cssdropdown" >
+        <li class="headlink"><a href="/<%=@url_normal%>?path=<%=@path%>">Normal</a></li>
+        <li class="headlink"><a href="/<%=@url_safe%>?path=<%=@path%>">Safe</a></li>
+        <li class="headlink"><a href="/<%=@url_merged%>?path=<%=@path%>">Merged</a></li>
+        <li class="headlink">
+          <a href="/">Favourites</a>
+          <ul>
+            <li><a href="#">Add Current</a></li>
+            <li><a href="#">Fav 1</a></li>
+            <li><a href="#">Fav 2</a></li>
+          </ul>
+        </li>
+        <li class="headlink"><a href="/podcast">Podcast</a></li>
+        <li class="headlink"><a href="/pref">Preferences</a></li>
+      </ul>
+    </div><br style="clear: both;">
+   
    <div id='container' class='centre round'>
       <%= yield %>
    </div>

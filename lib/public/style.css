@@ -61,6 +61,8 @@ div.menu {
   padding:        0px;
 }
 
+.menu a {text-decoration: none;}
+
 .menu a:link    {color: #444;}
 .menu a:visited {color: #444;}
 .menu a:hover   {color: #111;}

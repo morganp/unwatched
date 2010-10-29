@@ -1,0 +1,91 @@
+/* General */
+#nav {
+  display: block; 
+  width:  700px ;
+  padding: 0;
+   
+  margin-left:  auto ;
+  margin-right: auto ;
+
+}
+
+  #nav ul { 
+    list-style: none; 
+  }
+  
+  #cssdropdown, 
+  #cssdropdown * { 
+    padding: 0; 
+    margin: 0; 
+  }
+	
+	/* Head links */
+  #nav ul li.headlink {
+    /*width: 220px; */
+    float: left; 
+    /*margin-left: -1px; 
+    border: 1px black solid;
+    background-color: #e9e9e9; */
+    text-align: center; 
+  }
+  #nav ul li.headlink a {
+    display: block; 
+    padding: 0px 5px;
+  }
+
+	/* Child lists and links */
+	#nav ul li.headlink ul { 
+    display: none; 
+    /*border-top: 1px black solid; */
+    text-align: left; 
+    position: absolute;
+  }
+
+	#nav ul li.headlink:hover ul {
+    display: block; 
+  }
+	
+  #nav a {text-decoration: none;}
+
+  #nav a:link    {color: #444;}
+  #nav a:visited {color: #444;}
+  #nav a:hover   {color: #111;}
+  #nav a:active  {color: #000;}
+
+  
+
+  #nav ul li.headlink ul li a  {
+    padding: 5px; 
+    height: 17px;
+    min-width: 150px;
+    background-color: #DDD;
+  }
+	#nav ul li.headlink ul li a:link {
+    color: #444; 
+  }
+  #nav ul li.headlink ul li a:visited {
+    color: #444; 
+  }
+  #nav ul li.headlink ul li a:hover {
+    color: #111;
+    background-color: #AAA;
+  }
+  #nav ul li.headlink ul li a:active {
+    color: #111; 
+    background-color: #AAA;
+  }
+	
+
+  /*#nav ul a { color: #444; } */
+  /*#nav ul li a:hover { text-decoration: none; }*/
+
+ /* #nav ul li.headlink { 
+    background-color: white;
+    background-image: url(bg.gif);
+  }
+  #nav ul li.headlink ul {
+    background-image: url(bg.gif);
+    background-position: bottom; 
+    padding-bottom: 10px;
+  }*/
+
