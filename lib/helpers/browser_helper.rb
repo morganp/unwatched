@@ -135,13 +135,7 @@ puts
             if File.exists?(path) 
                open("| open '#{path}'")
               
-               # Check if in Database (on click to play)
-               #file_name = File.basename( path )
-               #node      = UnWatched::Node.find_or_create_by_name( file_name )
-               #path      = File.dirname( path )
-
                path      = mark_media("watched", path)
-
                return { :media=>true, :path=>path[:path] }
             else
                puts "Error #{path} does not exist"
