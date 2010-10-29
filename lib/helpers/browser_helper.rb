@@ -72,24 +72,35 @@ module UnWatched
          temp_url  = remove_sort( url )
          url_alpha = ''
          url_mod   = ''
+
+        puts
+        puts "Recieved sort is #{sort}"
+
          case sort
-            when :sort_alpha_asc
-               url_alpha = "alpha_desc/" + temp_url
-               url_mod   = "mod/"        + temp_url
+            when :alpha_asc
+               url_alpha = "sort/alpha_desc/" + temp_url
+               url_mod   = "sort/mod_asc/"        + temp_url
 
-            when :sort_alpha_desc
-               url_alpha = "alpha/" + temp_url
-               url_mod   = "mod/"   + temp_url
+            when :alpha_desc
+               url_alpha = "sort/alpha_asc/" + temp_url
+               url_mod   = "sort/mod_asc/"   + temp_url
 
-            when :sort_mod_asc
-               url_alpha = "alpha/"    + temp_url
-               url_mod   = "mod_desc/" + temp_url
+            when :mod_asc
+               url_alpha = "sort/alpha_asc/"    + temp_url
+               url_mod   = "sort/mod_desc/" + temp_url
 
-            when :sort_mod_desc
-               url_alpha = "alpha/" + temp_url
-               url_mod   = "mod/"   + temp_url
+            when :mod_desc
+               url_alpha = "sort/alpha_asc/" + temp_url
+               url_mod   = "sort/mod_asc/"   + temp_url
+
+            #TODO NEED otherwise else statment to find non matching things and apply default   
 
          end
+
+         puts url_alpha
+         puts url_mod
+puts
+
          return [url_alpha, url_mod]
       end
 
@@ -253,13 +264,13 @@ module UnWatched
 
 
       def sort_media_files( files, sort )
-         if sort == :sort_mod_asc or  sort == :sort_mod_desc
+         if sort == :mod_asc or  sort == :mod_desc
             files = files.sort_by { |file| File.stat(CGI.unescape(file[:path])).mtime }
          else
             files = files.sort_by { |file| file[:label].downcase }
          end
 
-         if sort == :sort_mod_desc or sort == :sort_alpha_desc
+         if sort == :mod_desc or sort == :alpha_desc
             files.reverse!
          end
 
