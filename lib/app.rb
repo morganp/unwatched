@@ -63,17 +63,9 @@ module UnWatched
          erb :pref
       end
 
-      post '/pref' do
-         UnWatched::Extension.delete_all
-         ext_array = params['post']['ext'].split(',')
-         ext_array.each do |ext|
-            ext.strip!
-            UnWatched::Extension.find_or_create_by_ext( ext )
-         end
+        ## Create urls for sorting links 
+        @url_alpha, @url_mod    = create_sort_urls( @url.dup, session[:sort] ) 
 
-         @ext = UnWatched::Extension.all
-         erb :pref
-      end
 
       
       ####################################
