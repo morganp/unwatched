@@ -7,6 +7,7 @@ require 'sinatra/session'
 require 'active_record'
 require 'model/node'
 require 'model/extension'
+require 'model/open'
 require 'helpers/browser_helper'
 
 #For the file name escaping unescaping
@@ -69,11 +70,13 @@ module UnWatched
     ####################################
     get '/pref' do
       @ext = UnWatched::Extension.all
+      @open_command =  Open.first.command
       erb :pref
     end
 
     post '/pref' do
-      @ext = UnWatched::Extension.parse_string( params['post']['ext'] )
+      @ext  = UnWatched::Extension.parse_string( params['post']['ext'] )
+      @open_command = Open.store( params['post']['open'] )
       erb :pref
     end
 

@@ -132,8 +132,10 @@ puts
          path = CGI.unescape( path )
          
          if path.match( /#{Extension.allowed_extension}/ )
-            if File.exists?(path) 
-               open("| open '#{path}'")
+            if File.exists?(path)
+
+               command = Open.first.command
+               open("| #{command} '#{path}'")
               
                path      = mark_media("watched", path)
                return { :media=>true, :path=>path[:path] }

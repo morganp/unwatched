@@ -9,6 +9,10 @@
    <h3>Media Extensions to Show</h3>
    <textarea id="ext" name="post[ext]" ><% @ext.each do |ext| %><%= ext.ext %>,<% end %></textarea><br  />
 
+   <h3>Command to Launch File</h3>
+   <textarea id="open" name="post[open]" ><%= @open_command %></textarea><br  />
+
+
    <h3>Safe Mode: blocked keywords</h3>
 
    <h3>Merged View: Paths to merge</h3>
