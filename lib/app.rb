@@ -8,6 +8,8 @@ require 'active_record'
 require 'model/node'
 require 'model/extension'
 require 'model/open'
+require 'model/favourite'
+
 require 'helpers/browser_helper'
 
 #For the file name escaping unescaping
@@ -90,6 +92,11 @@ module UnWatched
       redirect '/?path=' + get_path( params['path'] )
     end
 
+    get '/favourite/?' do
+       Favourite.find_or_create_by_path( params['path'] ) 
+       redirect '/?path=' + get_path( params['path'] )
+    end
+
     ####################################
     ### Main Route 
     ####################################
@@ -102,7 +109,7 @@ module UnWatched
       session[:filter] ||= :normal
       session[:sort]   ||= :alpha_asc 
 
-
+      @fav                    = Favourite.all
 
       @url                    = params['splat'].to_s
 

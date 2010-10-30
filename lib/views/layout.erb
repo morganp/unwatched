@@ -20,11 +20,12 @@
         <li class="headlink"><a href="/<%=@url_safe%>?path=<%=@path%>">Safe</a></li>
         <li class="headlink"><a href="/<%=@url_merged%>?path=<%=@path%>">Merged</a></li>
         <li class="headlink">
-          <a href="/">Favourites</a>
+          <a href="/favourite/?path=<%=@path%>">Favourites</a>
           <ul>
-            <li><a href="#">Add Current</a></li>
-            <li><a href="#">Fav 1</a></li>
-            <li><a href="#">Fav 2</a></li>
+            <li><a href="/favourite/?path=<%=@path%>">Add Current</a></li>
+          <% @fav.each do | fav |%>
+            <li><a href="/?path=<%=fav.path%>">Fav 1</a></li>
+          <% end %>
           </ul>
         </li>
         <li class="headlink"><a href="/podcast">Podcast</a></li>
